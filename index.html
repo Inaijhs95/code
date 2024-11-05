@@ -3,93 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>謎解きページ</title>
+    <title>パスワード入力</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #FFD700;
+            background-color: #ffcccc;
+            color: #ff4d4d;
             text-align: center;
             overflow: hidden;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #222;
-            border: 3px solid #FFD700;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #ffe6e6;
+            border: 3px solid #ff4d4d;
             border-radius: 15px;
-            box-shadow: 0 0 10px #FFD700;
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
         }
         h1 {
-            color: #FFD700;
-            font-size: 2.5rem;
+            color: #ff1a1a;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .prompt {
+            font-size: 1.1rem;
+            color: #ff3333;
             margin-bottom: 20px;
         }
-        p.hint {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin: 20px 0;
-        }
-        #answerInput {
+        #passwordInput {
             font-size: 1rem;
             padding: 10px;
             width: 80%;
-            border: 2px solid #FFD700;
+            border: 2px solid #ff4d4d;
             border-radius: 5px;
-            margin-top: 20px;
-            background-color: #333;
-            color: #FFD700;
+            background-color: #fff5f5;
+            color: #ff4d4d;
+            margin-bottom: 15px;
         }
-        #submitAnswer {
+        #submitPassword {
             padding: 10px 20px;
-            margin-top: 10px;
-            background-color: #FFD700;
-            color: #111;
+            background-color: #ff4d4d;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            box-shadow: 0 0 5px #FFD700;
+            box-shadow: 0 0 5px #ff4d4d;
             font-size: 1rem;
+            transition: background-color 0.3s;
         }
-        #hiddenLink {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #FFD700;
-            text-decoration: underline;
+        #submitPassword:hover {
+            background-color: #ff1a1a;
         }
-        .success-message {
+        .error-message {
             display: none;
-            color: #00FF00;
             font-size: 1.1rem;
+            color: #ff3333;
             margin-top: 15px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>謎解きページ</h1>
-        <p class="hint">ヒント: 秘密のパスワードは、最も古い友人がくれたもの。</p>
+        <h1>パスワード入力</h1>
+        <p class="prompt">正しいパスワードを入力してください。</p>
         
-        <input type="text" id="answerInput" placeholder="答えを入力してください">
-        <button id="submitAnswer">送信</button>
+        <input type="text" id="passwordInput" placeholder="パスワードを入力">
+        <button id="submitPassword">送信</button>
         
-        <p class="success-message" id="successMessage">正解です！隠しリンクが表示されました。</p>
-        <a href="https://example.com/hidden-page" id="hiddenLink" target="_blank">次のページに進む</a>
+        <p class="error-message" id="errorMessage">パスワードが間違っています。もう一度お試しください。</p>
     </div>
 
     <script>
-        document.getElementById("submitAnswer").addEventListener("click", function() {
-            const correctAnswer = "稲井"; // 正解のキーワード
-            const userAnswer = document.getElementById("answerInput").value.trim();
+        document.getElementById("submitPassword").addEventListener("click", function() {
+            const correctPassword = "44GK55ay44KM5qeY44Gn44GX44Gf"; // 正しいパスワード
+            const userPassword = document.getElementById("passwordInput").value.trim();
 
-            if (userAnswer === correctAnswer) {
-                document.getElementById("successMessage").style.display = "block";
-                document.getElementById("hiddenLink").style.display = "block";
+            if (userPassword === correctPassword) {
+                // 正解の場合に指定のURLにリダイレクト
+                window.location.href = "https://inaijhs95.my.canva.site/congratulation2025/";
             } else {
-                alert("違います！もう一度挑戦してください。");
-                document.getElementById("answerInput").value = "";
+                // 不正解の場合はエラーメッセージを表示
+                document.getElementById("errorMessage").style.display = "block";
+                document.getElementById("passwordInput").value = "";
             }
         });
     </script>
