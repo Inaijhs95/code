@@ -1,1 +1,97 @@
-index.html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎解きページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #FFD700;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #222;
+            border: 3px solid #FFD700;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #FFD700;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p.hint {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin: 20px 0;
+        }
+        #answerInput {
+            font-size: 1rem;
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #333;
+            color: #FFD700;
+        }
+        #submitAnswer {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #FFD700;
+            color: #111;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 5px #FFD700;
+            font-size: 1rem;
+        }
+        #hiddenLink {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #FFD700;
+            text-decoration: underline;
+        }
+        .success-message {
+            display: none;
+            color: #00FF00;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>謎解きページ</h1>
+        <p class="hint">ヒント: 秘密のパスワードは、最も古い友人がくれたもの。</p>
+        
+        <input type="text" id="answerInput" placeholder="答えを入力してください">
+        <button id="submitAnswer">送信</button>
+        
+        <p class="success-message" id="successMessage">正解です！隠しリンクが表示されました。</p>
+        <a href="https://example.com/hidden-page" id="hiddenLink" target="_blank">次のページに進む</a>
+    </div>
+
+    <script>
+        document.getElementById("submitAnswer").addEventListener("click", function() {
+            const correctAnswer = "稲井"; // 正解のキーワード
+            const userAnswer = document.getElementById("answerInput").value.trim();
+
+            if (userAnswer === correctAnswer) {
+                document.getElementById("successMessage").style.display = "block";
+                document.getElementById("hiddenLink").style.display = "block";
+            } else {
+                alert("違います！もう一度挑戦してください。");
+                document.getElementById("answerInput").value = "";
+            }
+        });
+    </script>
+</body>
+</html>
